@@ -1,6 +1,4 @@
 #include "api_robot.h"
-#include stdio.h
-#include stdlib.h
 
 #define VELOCIDADE 20; 
 #define DESLIGAR_MOTOR 0;
@@ -9,8 +7,8 @@
 motor_cfg_t mleft;
 motor_cfg_t mright;
 
-//void busca_parede();
-//void segue_parede();
+void busca_parede();
+void segue_parede();
 
 int _start()
 {
@@ -23,7 +21,7 @@ int _start()
 	SET_MOTOR_SPEED(&mleft);
 	SET_MOTOR_SPEED(&mright);
 
-	//busca_parede()
+	busca_parede();
 
 	while(1)
 	{
@@ -32,8 +30,6 @@ int _start()
 
 	return 0;
 }
-
-/*
 
 void busca_parede()
 {
@@ -140,4 +136,3 @@ void segue_parede()
 		}
 	}
 }
-*/
