@@ -5,6 +5,10 @@
 .set SUPERVISOR_MODE,    	 0x13
 .set SYS_MODE,            	 0x1F
 
+.align 4
+.org 0x0                    
+.section .iv, "a"
+
 _start:		
 
 interrupt_vector:

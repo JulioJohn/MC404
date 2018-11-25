@@ -3,7 +3,7 @@
 motor_cfg_t mleft;
 motor_cfg_t mright;
 
-void main()
+int _start()
 {
 	mleft.id = 0;
 	mright.id = 1;
@@ -18,4 +18,6 @@ void main()
 	{
 		
 	}
+
+	return 0;
 }
