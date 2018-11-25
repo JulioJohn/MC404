@@ -1,7 +1,9 @@
 .org 0x0
 .section .iv,"a"
-
-.set SONAR_LOOP_MASK, 				0b111111111111			
+		
+.set IRQ_MODE,          	 0xD2
+.set SUPERVISOR_MODE,    	 0x13
+.set SYS_MODE,            	 0x1F
 
 _start:		
 
@@ -32,7 +34,7 @@ interrupt_vector:
 @Iniciando o sistema 4.4
 RESET_HANDLER:
 	@ RESET machine time
-	ldr r1, =
+	ldr r1, =TIME_COUNTER
 	mov r0, #0
 	str r0, [r1]
 
@@ -113,9 +115,9 @@ RESET_HANDLER:
     @configurando o gpio
 	SET_GPIO:
 		.set GPIO_BASE,       0x53F84000
-		.set GPIO_DR,         0x53F84000
-		.set GPIO_GDIR,       0x53F84004
-		.set GPIO_PSR,        0x53F84008
+		.set GPIO_DR,         0x0
+		.set GPIO_GDIR,       0x4
+		.set GPIO_PSR,        0x8
 
     	ldr r1, =GPIO_BASE
 
@@ -216,7 +218,7 @@ READ_SONAR:
         ldr r2, [r1, #GPIO_DR]
         mov r0, r2, lsr #6
 
-        ldr r2, SONAR_LOOP_MASK
+        ldr r2, =0b111111111111
 
         @ r0 <- distancia
         and r0, r0, r2

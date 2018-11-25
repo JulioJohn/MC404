@@ -13,4 +13,9 @@ void main()
 
 	set_motor_speed(&mleft);
 	set_motor_speed(&mright);
+
+	while(1)
+	{
+		
+	}
 }
